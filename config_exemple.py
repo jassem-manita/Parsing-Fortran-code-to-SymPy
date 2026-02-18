@@ -1,0 +1,1 @@
+LFORTRAN_PATH = "/path_to_lfortran"
