@@ -1,0 +1,321 @@
+{
+    "node": "TranslationUnit",
+    "fields": {
+        "symtab": {
+            "node": "SymbolTable1",
+            "fields": {
+                "test": {
+                    "node": "Program",
+                    "fields": {
+                        "symtab": {
+                            "node": "SymbolTable2",
+                            "fields": {
+                                "x": {
+                                    "node": "Variable",
+                                    "fields": {
+                                        "parent_symtab": 2,
+                                        "name": "x",
+                                        "dependencies": [],
+                                        "intent": "Local",
+                                        "symbolic_value": [],
+                                        "value": [],
+                                        "storage": "Default",
+                                        "type": {
+                                            "node": "Real",
+                                            "fields": {
+                                                "kind": 4
+                                            },
+                                            "loc": {
+                                                "first": 17,
+                                                "last": 28,
+                                                "first_filename": "fortran_samples/02_expression.f90",
+                                                "first_line": 2,
+                                                "first_column": 5,
+                                                "last_filename": "fortran_samples/02_expression.f90",
+                                                "last_line": 2,
+                                                "last_column": 16
+                                            }
+                                        },
+                                        "type_declaration": [],
+                                        "abi": "Source",
+                                        "access": "Public",
+                                        "presence": "Required",
+                                        "value_attr": false,
+                                        "target_attr": false,
+                                        "contiguous_attr": false,
+                                        "bindc_name": [],
+                                        "is_volatile": false,
+                                        "is_protected": false
+                                    },
+                                    "loc": {
+                                        "first": 25,
+                                        "last": 25,
+                                        "first_filename": "fortran_samples/02_expression.f90",
+                                        "first_line": 2,
+                                        "first_column": 13,
+                                        "last_filename": "fortran_samples/02_expression.f90",
+                                        "last_line": 2,
+                                        "last_column": 13
+                                    }
+                                },
+                                "y": {
+                                    "node": "Variable",
+                                    "fields": {
+                                        "parent_symtab": 2,
+                                        "name": "y",
+                                        "dependencies": [],
+                                        "intent": "Local",
+                                        "symbolic_value": [],
+                                        "value": [],
+                                        "storage": "Default",
+                                        "type": {
+                                            "node": "Real",
+                                            "fields": {
+                                                "kind": 4
+                                            },
+                                            "loc": {
+                                                "first": 17,
+                                                "last": 28,
+                                                "first_filename": "fortran_samples/02_expression.f90",
+                                                "first_line": 2,
+                                                "first_column": 5,
+                                                "last_filename": "fortran_samples/02_expression.f90",
+                                                "last_line": 2,
+                                                "last_column": 16
+                                            }
+                                        },
+                                        "type_declaration": [],
+                                        "abi": "Source",
+                                        "access": "Public",
+                                        "presence": "Required",
+                                        "value_attr": false,
+                                        "target_attr": false,
+                                        "contiguous_attr": false,
+                                        "bindc_name": [],
+                                        "is_volatile": false,
+                                        "is_protected": false
+                                    },
+                                    "loc": {
+                                        "first": 28,
+                                        "last": 28,
+                                        "first_filename": "fortran_samples/02_expression.f90",
+                                        "first_line": 2,
+                                        "first_column": 16,
+                                        "last_filename": "fortran_samples/02_expression.f90",
+                                        "last_line": 2,
+                                        "last_column": 16
+                                    }
+                                }
+                            }
+                        },
+                        "name": "test",
+                        "dependencies": [],
+                        "body": [
+                            {
+                                "node": "Assignment",
+                                "fields": {
+                                    "target": {
+                                        "node": "Var",
+                                        "fields": {
+                                            "v": "y (SymbolTable2)"
+                                        },
+                                        "loc": {
+                                            "first": 34,
+                                            "last": 34,
+                                            "first_filename": "fortran_samples/02_expression.f90",
+                                            "first_line": 3,
+                                            "first_column": 5,
+                                            "last_filename": "fortran_samples/02_expression.f90",
+                                            "last_line": 3,
+                                            "last_column": 5
+                                        }
+                                    },
+                                    "value": {
+                                        "node": "RealBinOp",
+                                        "fields": {
+                                            "left": {
+                                                "node": "RealBinOp",
+                                                "fields": {
+                                                    "left": {
+                                                        "node": "RealConstant",
+                                                        "fields": {
+                                                            "r": 2.000000,
+                                                            "type": {
+                                                                "node": "Real",
+                                                                "fields": {
+                                                                    "kind": 4
+                                                                },
+                                                                "loc": {
+                                                                    "first": 38,
+                                                                    "last": 40,
+                                                                    "first_filename": "fortran_samples/02_expression.f90",
+                                                                    "first_line": 3,
+                                                                    "first_column": 9,
+                                                                    "last_filename": "fortran_samples/02_expression.f90",
+                                                                    "last_line": 3,
+                                                                    "last_column": 11
+                                                                }
+                                                            }
+                                                        },
+                                                        "loc": {
+                                                            "first": 38,
+                                                            "last": 40,
+                                                            "first_filename": "fortran_samples/02_expression.f90",
+                                                            "first_line": 3,
+                                                            "first_column": 9,
+                                                            "last_filename": "fortran_samples/02_expression.f90",
+                                                            "last_line": 3,
+                                                            "last_column": 11
+                                                        }
+                                                    },
+                                                    "op": "Mul",
+                                                    "right": {
+                                                        "node": "Var",
+                                                        "fields": {
+                                                            "v": "x (SymbolTable2)"
+                                                        },
+                                                        "loc": {
+                                                            "first": 44,
+                                                            "last": 44,
+                                                            "first_filename": "fortran_samples/02_expression.f90",
+                                                            "first_line": 3,
+                                                            "first_column": 15,
+                                                            "last_filename": "fortran_samples/02_expression.f90",
+                                                            "last_line": 3,
+                                                            "last_column": 15
+                                                        }
+                                                    },
+                                                    "type": {
+                                                        "node": "Real",
+                                                        "fields": {
+                                                            "kind": 4
+                                                        },
+                                                        "loc": {
+                                                            "first": 38,
+                                                            "last": 40,
+                                                            "first_filename": "fortran_samples/02_expression.f90",
+                                                            "first_line": 3,
+                                                            "first_column": 9,
+                                                            "last_filename": "fortran_samples/02_expression.f90",
+                                                            "last_line": 3,
+                                                            "last_column": 11
+                                                        }
+                                                    },
+                                                    "value": []
+                                                },
+                                                "loc": {
+                                                    "first": 38,
+                                                    "last": 44,
+                                                    "first_filename": "fortran_samples/02_expression.f90",
+                                                    "first_line": 3,
+                                                    "first_column": 9,
+                                                    "last_filename": "fortran_samples/02_expression.f90",
+                                                    "last_line": 3,
+                                                    "last_column": 15
+                                                }
+                                            },
+                                            "op": "Add",
+                                            "right": {
+                                                "node": "RealConstant",
+                                                "fields": {
+                                                    "r": 3.000000,
+                                                    "type": {
+                                                        "node": "Real",
+                                                        "fields": {
+                                                            "kind": 4
+                                                        },
+                                                        "loc": {
+                                                            "first": 48,
+                                                            "last": 50,
+                                                            "first_filename": "fortran_samples/02_expression.f90",
+                                                            "first_line": 3,
+                                                            "first_column": 19,
+                                                            "last_filename": "fortran_samples/02_expression.f90",
+                                                            "last_line": 3,
+                                                            "last_column": 21
+                                                        }
+                                                    }
+                                                },
+                                                "loc": {
+                                                    "first": 48,
+                                                    "last": 50,
+                                                    "first_filename": "fortran_samples/02_expression.f90",
+                                                    "first_line": 3,
+                                                    "first_column": 19,
+                                                    "last_filename": "fortran_samples/02_expression.f90",
+                                                    "last_line": 3,
+                                                    "last_column": 21
+                                                }
+                                            },
+                                            "type": {
+                                                "node": "Real",
+                                                "fields": {
+                                                    "kind": 4
+                                                },
+                                                "loc": {
+                                                    "first": 38,
+                                                    "last": 40,
+                                                    "first_filename": "fortran_samples/02_expression.f90",
+                                                    "first_line": 3,
+                                                    "first_column": 9,
+                                                    "last_filename": "fortran_samples/02_expression.f90",
+                                                    "last_line": 3,
+                                                    "last_column": 11
+                                                }
+                                            },
+                                            "value": []
+                                        },
+                                        "loc": {
+                                            "first": 38,
+                                            "last": 50,
+                                            "first_filename": "fortran_samples/02_expression.f90",
+                                            "first_line": 3,
+                                            "first_column": 9,
+                                            "last_filename": "fortran_samples/02_expression.f90",
+                                            "last_line": 3,
+                                            "last_column": 21
+                                        }
+                                    },
+                                    "overloaded": [],
+                                    "realloc_lhs": false,
+                                    "move_allocation": false
+                                },
+                                "loc": {
+                                    "first": 34,
+                                    "last": 50,
+                                    "first_filename": "fortran_samples/02_expression.f90",
+                                    "first_line": 3,
+                                    "first_column": 5,
+                                    "last_filename": "fortran_samples/02_expression.f90",
+                                    "last_line": 3,
+                                    "last_column": 21
+                                }
+                            }
+                        ]
+                    },
+                    "loc": {
+                        "first": 0,
+                        "last": 67,
+                        "first_filename": "fortran_samples/02_expression.f90",
+                        "first_line": 1,
+                        "first_column": 1,
+                        "last_filename": "fortran_samples/02_expression.f90",
+                        "last_line": 4,
+                        "last_column": 16
+                    }
+                }
+            }
+        },
+        "items": []
+    },
+    "loc": {
+        "first": 0,
+        "last": 67,
+        "first_filename": "fortran_samples/02_expression.f90",
+        "first_line": 1,
+        "first_column": 1,
+        "last_filename": "fortran_samples/02_expression.f90",
+        "last_line": 4,
+        "last_column": 16
+    }
+}
