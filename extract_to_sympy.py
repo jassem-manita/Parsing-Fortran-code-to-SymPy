@@ -1,19 +1,27 @@
 
+
+import sys
 from pathlib import Path
 from config import LFORTRAN_PATH
 import sympy as sp
 from parsing_fortran.asr import *
 
 
+
 def main():
-    fortran_file = Path("fortran_samples/02_expression.f90")
+    if len(sys.argv) < 2:
+        sys.exit(1)
+    fortran_file = Path(sys.argv[1])
     print(fortran_file.read_text())
     asr = get_asr(fortran_file, LFORTRAN_PATH)
-    cons, vars, ops = extract_from_asr(asr)
+    if not asr:
+        print("Error: LFortran did not return any ASR output.")
+        sys.exit(1)
+    cons, variables, ops = extract_from_asr(asr)
     print(f"Constants: {cons}")
-    print(f"Variables: {vars}")
+    print(f"Variables: {variables}")
     print(f"Operators: {ops}")
-    expr = build_sympy_expr(cons, vars)
+    expr = build_sympy_expr(cons, variables)
     if expr:
         x = sp.Symbol('x', real=True)
         print(f"\nSymPy expression: {expr}")

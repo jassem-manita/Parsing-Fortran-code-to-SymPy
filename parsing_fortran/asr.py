@@ -1,12 +1,12 @@
 import subprocess
-import re
+import json
 from pathlib import Path
 import sympy as sp
 
 
 def get_asr(fortran_file, lfortran_path):
     """
-    Run LFortran to get the ASR
+    Run LFortran to get the ASR in JSON format
 
     Parameters
     ==========
@@ -17,11 +17,12 @@ def get_asr(fortran_file, lfortran_path):
 
     Returns
     =======
-    str
-        The ASR output as a string with ANSI color codes stripped
+    dict
+        The ASR output parsed as a JSON dictionary
     """
-    result = subprocess.run([lfortran_path, '--show-asr', str(fortran_file)], capture_output=True, text=True)
-    return re.sub(r'\x1b\[[0-9;]*m', '', result.stdout)
+    result = subprocess.run([lfortran_path, '--show-asr', '--json', str(fortran_file)], capture_output=True, text=True)
+    return json.loads(result.stdout)
+
 
 
 def extract_from_asr(asr):
@@ -30,30 +31,45 @@ def extract_from_asr(asr):
 
     Parameters
     ==========
-    asr : str
-        ASR output as a string
+    asr : dict
+        ASR output as a JSON dictionary
 
     Returns
     =======
     tuple
         (constants, variables, operators)
     """
-    lines = asr.split('\n')
     cons = []
-    vars = []
+    vars_ = []
     ops = []
-    for i, line in enumerate(lines):
-        stripped = line.strip()
-        if 'RealConstant' in line and i + 1 < len(lines):
-            match = re.search(r'(\d+\.\d+)', lines[i + 1].strip())
-            if match:
-                cons.append(float(match.group(1)))
-        match = re.match(r'\(Var\s+\d+\s+(\w+)\)', stripped)
-        if match:
-            vars.append(match.group(1))
-        if stripped in ['Mul', 'Add', 'Sub', 'Div']:
-            ops.append(stripped)
-    return cons, vars, ops
+
+    def walk(node):
+        if isinstance(node, dict):
+            node_type = node.get('node')
+            fields = node.get('fields', {})
+            if node_type == 'RealConstant':
+                value = fields.get('r')
+                if value is not None:
+                    try:
+                        cons.append(float(value))
+                    except Exception:
+                        pass
+            elif node_type == 'Var':
+                v = fields.get('v')
+                if isinstance(v, str):
+                    vars_.append(v.split(' (')[0])
+            elif node_type in {'RealBinOp', 'IntegerBinOp'}:
+                op = fields.get('op')
+                if op in {'Add', 'Sub', 'Mul', 'Div'}:
+                    ops.append(op)
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for item in node:
+                walk(item)
+
+    walk(asr)
+    return cons, vars_, ops
 
 
 def build_sympy_expr(cons, vars):
